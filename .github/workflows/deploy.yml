@@ -7,26 +7,26 @@ on:
 jobs:
  build-and-deploy:
   runs-on: ubuntu-latest
-      steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Log in to Azure
-        uses: azure/login@v1
-        with:
+    - name: Log in to Azure
+      uses: azure/login@v1
+      with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Log in to ACR
-        run: az acr login --name RoLRegistry
+    - name: Log in to ACR
+      run: az acr login --name RoLRegistry
 
-      - name: Build and push Docker image
-        run: |
+    - name: Build and push Docker image
+      run: |
           docker build -t rolwebapp:v1 .
           docker tag rolwebapp:v1 rolregistry.azurecr.io/rolwebapp:v1
           docker push rolregistry.azurecr.io/rolwebapp:v1
 
-      - name: Update Azure Web App container
-        run: |
+    - name: Update Azure Web App container
+      run: |
           az webapp config container set \
             --name RoL-containerwebapp \
             --resource-group <your-resource-group> \
