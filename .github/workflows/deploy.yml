@@ -24,7 +24,7 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-          docker build -t rolwebapp:v1 .
+          docker build -t rolwebapp:v1 -f RoLWebApp/Dockerfile RoLWebApp/
           docker tag rolwebapp:v1 rolregistrydev.azurecr.io/rolwebapp:v1
           docker push rolregistrydev.azurecr.io/rolwebapp:v1
 
