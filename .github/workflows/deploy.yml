@@ -32,6 +32,6 @@ jobs:
       run: |
           az webapp config container set \
             --name RoL-containerwebapp \
-            --resource-group <your-resource-group> \
+            --resource-group rg-webapp \
             --docker-custom-image-name rolregistrydev.azurecr.io/rolwebapp:v1 \
             --docker-registry-server-url https://rolregistrydev.azurecr.io
