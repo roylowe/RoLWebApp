@@ -35,9 +35,4 @@ jobs:
             --resource-group rg-webapp \
             --docker-custom-image-name rolregistrydev.azurecr.io/rolwebapp:v1 \
             --docker-registry-server-url https://rolregistrydev.azurecr.io
-    - name: Azure CLI - Deploy Container
-      run: |
-       az webapp config container set \
-        --name RoL-containerwebapp \
-        --resource-group rg-webapp \
-        --docker-custom-image-name rolregistrydev.azurecr.io/rolwebapp:latest
+   
