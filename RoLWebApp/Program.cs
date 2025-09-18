@@ -1,5 +1,8 @@
 var builder = WebApplication.CreateBuilder(args);
 
+//Add bind to port 80
+builder.WebHost.UseUrls("http://*:80");
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
